@@ -28,7 +28,7 @@ const features = [
   },
   {
     title: 'Offline-first mindset',
-    copy: 'Designed for real fishing days where service can be unreliable.',
+    copy: 'Designed for real fishing days where service can be unreliable on non-existent.',
   },
 ]
 
@@ -77,20 +77,20 @@ const screenshots = [
 const privacyPoints = [
   'FishLog is being built with a local-first mindset.',
   'Catch logs should be useful even when cell service is poor.',
-  'Account and backup features are planned to be optional.',
+  'Account and backup features are optional and not required for core functionality.',
   'The goal is that users stay in control of their fishing history.',
 ]
 
 const roadmapItems = [
-  { title: 'Offline catch and trip logging', status: 'In progress' },
-  { title: 'Photo attachments', status: 'In progress' },
+  { title: 'Offline catch and trip logging', status: 'Ready' },
+  { title: 'Photo attachments', status: 'Ready' },
   {
     title: 'Forecast shown during active trips when internet is available',
-    status: 'Planned',
+    status: 'Ready',
   },
-  { title: 'Export/backup options', status: 'Planned' },
-  { title: 'Pattern insights from catch history', status: 'Planned' },
-  { title: 'Optional account/cloud backup', status: 'Planned' },
+  { title: 'Export/backup options', status: 'Ready' },
+  { title: 'Pattern insights from catch history', status: 'Ready' },
+  { title: 'Optional account/cloud backup', status: 'Ready' },
 ]
 
 function App() {
