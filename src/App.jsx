@@ -1,172 +1,299 @@
 import './App.css'
 
+const baseUrl = import.meta.env.BASE_URL
+const assetPath = (fileName) => `${baseUrl}screenshots/${fileName}`
+
+const heroStats = ['Water temp', 'Depth', 'Bait', 'Trip notes']
+
 const features = [
   {
     title: 'Log catches fast',
-    text: 'Record species, size, time, and location while the details are still fresh.',
+    copy: 'Record the details that matter while you are still on the water.',
   },
   {
-    title: 'Track weather and water conditions',
-    text: 'Keep notes on sky, wind, pressure, clarity, and the water you fished.',
+    title: 'Track conditions',
+    copy: 'Save weather, water temperature, depth, structure, and location context.',
   },
   {
-    title: 'Save bait, depth, and water temp',
-    text: 'Connect every catch to the presentation and conditions that produced it.',
+    title: 'Remember what worked',
+    copy: 'Keep bait, lure, presentation, and notes connected to each catch.',
   },
   {
-    title: 'Add photos and notes',
-    text: 'Capture the proof, the story, and the small clues that matter next time.',
+    title: 'Photos and trip notes',
+    copy: 'Build a visual record of fish, trips, locations, and lessons learned.',
   },
   {
     title: 'Spot patterns over time',
-    text: 'Build a personal history that helps you choose better spots and tactics.',
+    copy: 'Review your history to see what conditions keep producing.',
   },
   {
-    title: 'Keep your fishing history private',
-    text: 'Your trips, waypoints, and productive patterns are yours to keep.',
+    title: 'Offline-first mindset',
+    copy: 'Designed for real fishing days where service can be unreliable.',
   },
+]
+
+const audiences = [
+  'Pond fishermen',
+  'Lake fishermen',
+  'Kayak anglers',
+  'Bank fishermen',
+  'Weekend anglers',
+]
+
+const screenshots = [
+  {
+    title: 'Home dashboard',
+    image: assetPath('home-screen.png'),
+    alt: 'FishLog home dashboard screenshot on a phone',
+    isPlaceholder: false,
+  },
+  // Replace these placeholder images with real app screenshots as screens are finalized.
+  {
+    title: 'Active trip',
+    image: assetPath('fish.png'),
+    alt: 'Placeholder FishLog active trip screenshot',
+    isPlaceholder: true,
+  },
+  {
+    title: 'Log a catch',
+    image: assetPath('fish.png'),
+    alt: 'Placeholder FishLog log a catch screenshot',
+    isPlaceholder: true,
+  },
+  {
+    title: 'Catch history',
+    image: assetPath('fish.png'),
+    alt: 'Placeholder FishLog catch history screenshot',
+    isPlaceholder: true,
+  },
+  {
+    title: 'Insights',
+    image: assetPath('fish.png'),
+    alt: 'Placeholder FishLog insights screenshot',
+    isPlaceholder: true,
+  },
+]
+
+const privacyPoints = [
+  'FishLog is being built with a local-first mindset.',
+  'Catch logs should be useful even when cell service is poor.',
+  'Account and backup features are planned to be optional.',
+  'The goal is that users stay in control of their fishing history.',
 ]
 
 const roadmapItems = [
-  'Android launch with fast offline catch logging',
-  'Photo attachments and richer trip notes',
-  'Optional encrypted backup and device sync',
-  'Seasonal pattern summaries and search filters',
+  { title: 'Offline catch and trip logging', status: 'In progress' },
+  { title: 'Photo attachments', status: 'In progress' },
+  {
+    title: 'Forecast shown during active trips when internet is available',
+    status: 'Planned',
+  },
+  { title: 'Export/backup options', status: 'Planned' },
+  { title: 'Pattern insights from catch history', status: 'Planned' },
+  { title: 'Optional account/cloud backup', status: 'Planned' },
 ]
 
 function App() {
+  const year = new Date().getFullYear()
+
   return (
-    <main className="site-shell">
-      <section className="hero-section">
-        <div className="hero-water" aria-hidden="true">
-          <span className="ripple ripple-one"></span>
-          <span className="ripple ripple-two"></span>
-          <span className="shoreline"></span>
-        </div>
-
-        <nav className="topbar" aria-label="Primary navigation">
+    <div className="site-shell">
+      <header className="site-header">
+        <nav className="nav" aria-label="Primary navigation">
           <a className="brand" href="#top" aria-label="FishLog home">
-            <span className="brand-mark">F</span>
-            FishLog
+            <span className="brand-icon">
+              <img src={assetPath('fish.png')} alt="" loading="lazy" />
+            </span>
+            <span>FishLog</span>
           </a>
-          <a className="nav-link" href="mailto:hello@example.com">
-            Contact
-          </a>
-        </nav>
 
-        <div className="hero-grid" id="top">
-          <div className="hero-copy">
-            <p className="eyebrow">Fishing history that works as hard as you do</p>
-            <h1>Log every catch. Learn every pattern.</h1>
-            <p className="hero-text">
-              FishLog is an Android fishing journal for anglers who want quick
-              catch records, useful condition tracking, and a private history of
-              what worked on the water.
-            </p>
-            <div className="hero-actions" aria-label="FishLog actions">
-              <a className="button button-primary" href="#mockup">
-                Preview the app
-              </a>
-              <a className="button button-secondary" href="#roadmap">
-                View roadmap
-              </a>
-            </div>
+          <div className="nav-links">
+            <a href="#features">Features</a>
+            <a href="#screenshots">Screenshots</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#roadmap">Roadmap</a>
           </div>
+        </nav>
+      </header>
 
-          <div className="phone-stage" id="mockup" aria-label="FishLog app mockup">
-            <div className="phone">
-              <div className="phone-speaker"></div>
-              <div className="app-screen">
-                <div className="app-header">
-                  <span>Today&apos;s Catch</span>
-                  <span className="status-dot"></span>
-                </div>
-                <div className="catch-card">
-                  <span className="fish-icon" aria-hidden="true"></span>
-                  <div>
-                    <strong>Largemouth Bass</strong>
-                    <p>7:18 AM · North cove</p>
-                  </div>
-                </div>
-                <div className="metric-grid">
-                  <span>Water 68°F</span>
-                  <span>Depth 9 ft</span>
-                  <span>Bait Jig</span>
-                  <span>Wind SW</span>
-                </div>
-                <div className="notes-panel">
-                  <span className="note-line long"></span>
-                  <span className="note-line"></span>
-                  <span className="note-line short"></span>
-                </div>
+      <main id="top">
+        <section className="hero section-pad">
+          <div className="section-inner hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow">Private fishing journal for Android</p>
+              <h1>Turn every catch into better fishing next time.</h1>
+              <p className="hero-text">
+                FishLog is a private fishing journal for logging catches, trips,
+                conditions, bait, depth, photos, and notes - so your history
+                becomes useful patterns.
+              </p>
+              <div className="hero-actions" aria-label="FishLog calls to action">
+                <a className="button primary-button" href="#features">
+                  View Features
+                </a>
+                <a className="button secondary-button" href="#roadmap">
+                  See Roadmap
+                </a>
+              </div>
+            </div>
+
+            <div className="hero-visual" aria-label="FishLog app preview">
+              <div className="phone-frame hero-phone">
+                <img
+                  src={assetPath('home-screen.png')}
+                  alt="FishLog home screen showing a fishing log dashboard"
+                />
+              </div>
+              <div className="stat-cloud" aria-hidden="true">
+                {heroStats.map((stat) => (
+                  <span key={stat}>{stat}</span>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section feature-section" aria-labelledby="features-title">
-        <div className="section-heading">
-          <p className="eyebrow">Built for repeatable results</p>
-          <h2 id="features-title">Everything worth remembering from a day on the water.</h2>
-        </div>
-        <div className="feature-grid">
-          {features.map((feature) => (
-            <article className="feature-card" key={feature.title}>
-              <span className="card-icon" aria-hidden="true"></span>
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        <section className="section-pad" id="features" aria-labelledby="features-title">
+          <div className="section-inner">
+            <div className="section-heading">
+              <p className="eyebrow">Features</p>
+              <h2 id="features-title">A clean record of what happened on the water.</h2>
+              <p>
+                Log the details that affect the bite without turning every trip
+                into paperwork.
+              </p>
+            </div>
 
-      <section className="section split-section">
-        <div>
-          <p className="eyebrow">Why FishLog?</p>
-          <h2>For anglers who fish real water in real conditions.</h2>
-        </div>
-        <div className="reason-list">
-          <p>
-            Lake and pond anglers can compare seasonal spots, productive banks,
-            grass lines, and structure without digging through scattered notes.
-          </p>
-          <p>
-            Kayak and bank fishermen can save the exact conditions around each
-            bite, even when a quick phone note is all there is time for.
-          </p>
-        </div>
-      </section>
+            <div className="feature-grid">
+              {features.map((feature) => (
+                <article className="feature-card" key={feature.title}>
+                  <span className="feature-mark" aria-hidden="true" />
+                  <h3>{feature.title}</h3>
+                  <p>{feature.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <section className="section data-section">
-        <div className="data-panel">
-          <p className="eyebrow">Your data stays yours</p>
-          <h2>Offline-first logging, with optional backup later.</h2>
-          <p>
-            FishLog is designed so catch logging works even when service is weak
-            at the ramp, pond, or back of the creek. Your fishing history starts
-            on your device, and future backup options will be optional.
-          </p>
-        </div>
-      </section>
+        <section className="why section-pad" aria-labelledby="why-title">
+          <div className="section-inner why-grid">
+            <div>
+              <p className="eyebrow">Why FishLog?</p>
+              <h2 id="why-title">Focused records for anglers who want useful recall.</h2>
+            </div>
+            <div className="why-copy">
+              <p>
+                Most fishing apps try to be everything. FishLog is focused on
+                helping you keep a clean, useful record of your own fishing.
+              </p>
+              <div className="audience-list" aria-label="FishLog audience">
+                {audiences.map((audience) => (
+                  <span key={audience}>{audience}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section className="section roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
-        <div className="section-heading">
-          <p className="eyebrow">Roadmap</p>
-          <h2 id="roadmap-title">A practical app, growing one useful feature at a time.</h2>
-        </div>
-        <ol className="roadmap-list">
-          {roadmapItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ol>
-      </section>
+        <section
+          className="section-pad"
+          id="screenshots"
+          aria-labelledby="screenshots-title"
+        >
+          <div className="section-inner">
+            <div className="section-heading">
+              <p className="eyebrow">Screenshots</p>
+              <h2 id="screenshots-title">Built around the screens anglers need most.</h2>
+            </div>
+
+            <div className="screenshot-grid">
+              {screenshots.map((shot) => (
+                <article
+                  className={`screenshot-card ${shot.isPlaceholder ? '' : 'featured-shot'}`}
+                  key={shot.title}
+                >
+                  <div className="phone-frame screenshot-phone">
+                    <img src={shot.image} alt={shot.alt} loading="lazy" />
+                  </div>
+                  <div>
+                    <h3>{shot.title}</h3>
+                    {shot.isPlaceholder && <p>Placeholder screenshot</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="privacy section-pad"
+          id="privacy"
+          aria-labelledby="privacy-title"
+        >
+          <div className="section-inner privacy-grid">
+            <div>
+              <p className="eyebrow">Privacy and control</p>
+              <h2 id="privacy-title">Your fishing history should stay useful and yours.</h2>
+              <p>
+                FishLog is being shaped around practical days outside, where a
+                weak signal should not make your notes disappear or your trip
+                harder to remember.
+              </p>
+            </div>
+            <ul className="check-list">
+              {privacyPoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="section-pad" id="roadmap" aria-labelledby="roadmap-title">
+          <div className="section-inner">
+            <div className="section-heading">
+              <p className="eyebrow">Roadmap</p>
+              <h2 id="roadmap-title">Practical improvements, marked honestly.</h2>
+            </div>
+            <div className="roadmap-grid">
+              {roadmapItems.map((item) => (
+                <article className="roadmap-card" key={item.title}>
+                  <span>{item.status}</span>
+                  <h3>{item.title}</h3>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="closing section-pad" aria-labelledby="closing-title">
+          <div className="section-inner closing-panel">
+            <h2 id="closing-title">Start building a fishing history you can actually use.</h2>
+            <p>
+              FishLog is made for anglers who want simple records, better recall,
+              and smarter decisions next time they hit the water.
+            </p>
+            <a className="button primary-button" href="#top">
+              Follow the project
+            </a>
+          </div>
+        </section>
+      </main>
 
       <footer className="site-footer">
-        <strong>FishLog</strong>
-        <a href="mailto:hello@example.com">hello@example.com</a>
+        <div>
+          <strong>FishLog</strong>
+          <p>Private fishing logs. Better patterns. Fewer forgotten details.</p>
+        </div>
+        <div className="footer-links">
+          <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+        <p className="copyright">&copy; {year} FishLog</p>
       </footer>
-    </main>
+    </div>
   )
 }
 
