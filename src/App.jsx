@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './App.css'
 
 const baseUrl = import.meta.env.BASE_URL
@@ -93,8 +94,188 @@ const roadmapItems = [
   { title: 'Optional account/cloud backup', status: 'Ready' },
 ]
 
-function App() {
+const policySections = [
+  {
+    title: 'Information We Collect',
+    paragraphs: [
+      'FishLog may collect or store the following types of information:',
+    ],
+    list: [
+      'Account information: If you create an account, FishLog may collect your email address for login, authentication, backup, and account recovery.',
+      'Fishing log information: FishLog may store trip details, catch details, dates and times, water body or lake names, fishing notes, species, bait, lure, depth, water temperature, weather-related notes, and other information you choose to enter.',
+      'Photos: If you add photos to a catch or trip, FishLog may store those photos as part of your fishing log.',
+      'Location-related information: FishLog may store location-related fishing details when you enter them or allow the app to use them, such as the water body, fishing spot, or trip location.',
+      'Device and technical information: FishLog may collect limited technical information needed to operate the app, maintain security, troubleshoot issues, and support cloud backup.',
+    ],
+  },
+  {
+    title: 'How We Use Information',
+    paragraphs: ['FishLog uses information to:'],
+    list: [
+      "Provide the app's fishing log features.",
+      'Save, back up, and restore your fishing data.',
+      'Allow you to access your data if you switch devices or reinstall the app.',
+      'Improve app reliability, security, and performance.',
+      'Provide user support when requested.',
+    ],
+  },
+  {
+    title: 'Cloud Backup',
+    paragraphs: [
+      'FishLog includes optional cloud backup. When you create an account or enable backup features, your FishLog data may be transmitted to and stored using cloud services so your data can be backed up and restored. If you do not use cloud backup, your fishing log data may remain only on your device, depending on the app version and settings.',
+    ],
+  },
+  {
+    title: 'Third-Party Services',
+    paragraphs: [
+      "FishLog may use trusted third-party services to operate the app, including services for authentication, cloud database storage, email login, and app hosting. These services may process information only as needed to provide FishLog's features, security, backup, and account functionality.",
+    ],
+  },
+  {
+    title: 'Data Sharing',
+    paragraphs: [
+      'FishLog does not sell your personal information.',
+      'FishLog does not share your personal information with advertisers.',
+      'FishLog may share or process information with service providers only as needed to operate the app, including authentication, cloud backup, storage, hosting, security, or support. FishLog may also disclose information if required by law or necessary to protect the rights, safety, or security of users, the app, or others.',
+    ],
+  },
+  {
+    title: 'Data Retention',
+    paragraphs: [
+      'FishLog keeps your data for as long as your account is active or as long as needed to provide the app\'s features. Data stored locally on your device may remain there until you delete it or uninstall the app. Data stored through cloud backup may remain until you delete it, request deletion, or close your account.',
+    ],
+  },
+  {
+    title: 'Data Deletion',
+    paragraphs: [
+      'You may delete fishing log entries inside the app where deletion features are available. You may also request deletion of your account or cloud backup data by contacting us at the email address below.',
+    ],
+  },
+  {
+    title: 'Security',
+    paragraphs: [
+      'FishLog uses reasonable technical and organizational measures to protect user data. However, no method of electronic storage or transmission over the internet is completely secure, and FishLog cannot guarantee absolute security.',
+    ],
+  },
+  {
+    title: "Children's Privacy",
+    paragraphs: [
+      'FishLog is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information through FishLog, please contact us so we can take appropriate action.',
+    ],
+  },
+  {
+    title: 'User Choices',
+    paragraphs: [
+      'You can choose what fishing information you enter into FishLog. You can choose whether to create an account and use cloud backup. You can also choose whether to grant optional permissions, such as photo or location permissions, depending on the features you use.',
+    ],
+  },
+  {
+    title: 'Changes to This Privacy Policy',
+    paragraphs: [
+      'We may update this Privacy Policy from time to time. When we make changes, we will update the effective date on this page. Continued use of FishLog after changes means you accept the updated policy.',
+    ],
+  },
+]
+
+function usePageTitle(title) {
+  useEffect(() => {
+    document.title = title
+  }, [title])
+}
+
+function PrivacyPolicyPage() {
   const year = new Date().getFullYear()
+
+  usePageTitle('Privacy Policy for FishLog')
+
+  return (
+    <div className="site-shell policy-shell">
+      <header className="site-header">
+        <nav className="nav" aria-label="Primary navigation">
+          <a className="brand" href="/" aria-label="FishLog home">
+            <span className="brand-icon">
+              <img src={assetPath('fish.png')} alt="" loading="lazy" />
+            </span>
+            <span>FishLog</span>
+          </a>
+
+          <div className="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/#screenshots">Screenshots</a>
+            <a href="/privacy" aria-current="page">
+              Privacy
+            </a>
+            <a href="/#roadmap">Roadmap</a>
+          </div>
+        </nav>
+      </header>
+
+      <main className="policy-main">
+        <article className="section-inner policy-article">
+          <p className="eyebrow">Effective date: June 7, 2026</p>
+          <h1>Privacy Policy for FishLog</h1>
+          <p className="policy-intro">
+            FishLog is a fishing trip and catch logging app designed to help
+            anglers record fishing trips, catches, notes, photos, and related
+            fishing information. This Privacy Policy explains what information
+            FishLog collects, how it is used, and how users can control their
+            data.
+          </p>
+
+          {policySections.map((section) => (
+            <section className="policy-section" key={section.title}>
+              <h2>{section.title}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              {section.list && (
+                <ul>
+                  {section.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          ))}
+
+          <section className="policy-section contact-section">
+            <h2>Contact Us</h2>
+            <p>
+              If you have questions about this Privacy Policy or want to request
+              deletion of your account or cloud backup data, contact us at:
+            </p>
+            <p>
+              <a href="mailto:fishlogapp.feedback@gmail.com">
+                fishlogapp.feedback@gmail.com
+              </a>
+            </p>
+          </section>
+        </article>
+      </main>
+
+      <footer className="site-footer">
+        <div>
+          <strong>FishLog</strong>
+          <p>Private fishing logs. Better patterns. Fewer forgotten details.</p>
+        </div>
+        <div className="footer-links">
+          <a href="/#features">Features</a>
+          <a href="/#screenshots">Screenshots</a>
+          <a href="/privacy" aria-current="page">
+            Privacy Policy
+          </a>
+          <a href="/#roadmap">Roadmap</a>
+        </div>
+        <p className="copyright">&copy; {year} FishLog</p>
+      </footer>
+    </div>
+  )
+}
+
+function HomePage() {
+  const year = new Date().getFullYear()
+
+  usePageTitle('FishLog - Private Fishing Journal for Android')
 
   return (
     <div className="site-shell">
@@ -110,7 +291,7 @@ function App() {
           <div className="nav-links">
             <a href="#features">Features</a>
             <a href="#screenshots">Screenshots</a>
-            <a href="#privacy">Privacy</a>
+            <a href="/privacy">Privacy</a>
             <a href="#roadmap">Roadmap</a>
           </div>
         </nav>
@@ -131,8 +312,8 @@ function App() {
                 <a className="button primary-button" href="#features">
                   View Features
                 </a>
-                <a className="button secondary-button" href="#roadmap">
-                  See Roadmap
+                <a className="button secondary-button" href="/privacy">
+                  Privacy Policy
                 </a>
               </div>
             </div>
@@ -236,10 +417,13 @@ function App() {
               <p className="eyebrow">Privacy and control</p>
               <h2 id="privacy-title">Your fishing history should stay useful and yours.</h2>
               <p>
-                FishLog is being shaped around practical days outside, where a
-                weak signal should not make your notes disappear or your trip
-                harder to remember.
+                FishLog does not sell user data or show ads. Optional accounts
+                and cloud backup help anglers restore their fishing logs when
+                they switch devices or reinstall the app.
               </p>
+              <a className="text-link" href="/privacy">
+                Read the full Privacy Policy
+              </a>
             </div>
             <ul className="check-list">
               {privacyPoints.map((point) => (
@@ -288,13 +472,32 @@ function App() {
         <div className="footer-links">
           <a href="#features">Features</a>
           <a href="#screenshots">Screenshots</a>
-          <a href="#privacy">Privacy</a>
+          <a href="/privacy">Privacy Policy</a>
           <a href="#roadmap">Roadmap</a>
         </div>
         <p className="copyright">&copy; {year} FishLog</p>
       </footer>
     </div>
   )
+}
+
+function App() {
+  const redirectPath = new URLSearchParams(window.location.search).get('redirect')
+
+  if (redirectPath?.startsWith('/')) {
+    window.history.replaceState(null, '', redirectPath)
+  }
+
+  const currentPath = redirectPath?.startsWith('/')
+    ? redirectPath
+    : window.location.pathname
+  const pagePath = currentPath.replace(/\/$/, '') || '/'
+
+  if (pagePath === '/privacy') {
+    return <PrivacyPolicyPage />
+  }
+
+  return <HomePage />
 }
 
 export default App
