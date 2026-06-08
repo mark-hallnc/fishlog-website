@@ -590,6 +590,23 @@ p {
   color: var(--reed);
 }
 
+.policy-section a {
+  color: var(--water-dark);
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.policy-section strong {
+  color: var(--ink);
+}
+
+.deletion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
 .contact-section a {
   color: var(--water-dark);
   font-weight: 850;

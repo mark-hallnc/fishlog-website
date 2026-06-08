@@ -177,6 +177,9 @@ const policySections = [
   },
 ]
 
+const deletionMailto =
+  'mailto:support@fishlogapp.com?subject=FishLog%20Account%20Deletion%20Request'
+
 function usePageTitle(title) {
   useEffect(() => {
     document.title = title
@@ -263,6 +266,113 @@ function PrivacyPolicyPage() {
           <a href="/#screenshots">Screenshots</a>
           <a href="/privacy" aria-current="page">
             Privacy Policy
+          </a>
+          <a href="/delete-account">Delete Account</a>
+          <a href="/#roadmap">Roadmap</a>
+        </div>
+        <p className="copyright">&copy; {year} FishLog</p>
+      </footer>
+    </div>
+  )
+}
+
+function DeleteAccountPage() {
+  const year = new Date().getFullYear()
+
+  usePageTitle('FishLog Account and Data Deletion')
+
+  return (
+    <div className="site-shell policy-shell">
+      <header className="site-header">
+        <nav className="nav" aria-label="Primary navigation">
+          <a className="brand" href="/" aria-label="FishLog home">
+            <span className="brand-icon">
+              <img src={assetPath('fish.png')} alt="" loading="lazy" />
+            </span>
+            <span>FishLog</span>
+          </a>
+
+          <div className="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/#screenshots">Screenshots</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/delete-account" aria-current="page">
+              Delete Account
+            </a>
+            <a href="/#roadmap">Roadmap</a>
+          </div>
+        </nav>
+      </header>
+
+      <main className="policy-main">
+        <article className="section-inner policy-article">
+          <p className="eyebrow">FishLog Tech</p>
+          <h1>FishLog Account and Data Deletion</h1>
+          <p className="policy-intro">
+            FishLog users can request deletion of their account and associated
+            cloud backup data at any time.
+          </p>
+
+          <section className="policy-section">
+            <h2>How to Request Deletion</h2>
+            <p>
+              To request deletion, email{' '}
+              <a href={deletionMailto}>support@fishlogapp.com</a> from the
+              email address used for your FishLog account.
+            </p>
+            <p>
+              Use the subject line:{' '}
+              <strong>FishLog Account Deletion Request</strong>
+            </p>
+            <p>
+              Please include the email address associated with your FishLog
+              account so we can verify and process the request.
+            </p>
+            <div className="deletion-actions">
+              <a className="button primary-button" href={deletionMailto}>
+                Request account deletion
+              </a>
+            </div>
+          </section>
+
+          <section className="policy-section">
+            <h2>What Gets Deleted</h2>
+            <p>
+              After your request is verified, FishLog will delete your account
+              and associated cloud backup data, including account/profile
+              information, saved trips, catches, fishing logs, and related app
+              backup data.
+            </p>
+            <p>
+              Some records may be retained only if required for security, fraud
+              prevention, legal, or operational reasons.
+            </p>
+            <p>Deletion requests are typically completed within 30 days.</p>
+          </section>
+
+          <section className="policy-section">
+            <h2>Local Device Data</h2>
+            <p>
+              Deleting your cloud account and backup data does not automatically
+              delete local-only data stored on your device. To remove local data
+              from your device, you can delete the app or clear the app&apos;s
+              local storage from your device settings.
+            </p>
+          </section>
+        </article>
+      </main>
+
+      <footer className="site-footer">
+        <div>
+          <strong>FishLog</strong>
+          <p>Private fishing logs. Better patterns. Fewer forgotten details.</p>
+        </div>
+        <div className="footer-links">
+          <a href="/#features">Features</a>
+          <a href="/#screenshots">Screenshots</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/delete-account" aria-current="page">
+            Delete Account
           </a>
           <a href="/#roadmap">Roadmap</a>
         </div>
@@ -473,6 +583,7 @@ function HomePage() {
           <a href="#features">Features</a>
           <a href="#screenshots">Screenshots</a>
           <a href="/privacy">Privacy Policy</a>
+          <a href="/delete-account">Delete Account</a>
           <a href="#roadmap">Roadmap</a>
         </div>
         <p className="copyright">&copy; {year} FishLog</p>
@@ -495,6 +606,10 @@ function App() {
 
   if (pagePath === '/privacy') {
     return <PrivacyPolicyPage />
+  }
+
+  if (pagePath === '/delete-account') {
+    return <DeleteAccountPage />
   }
 
   return <HomePage />

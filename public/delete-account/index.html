@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FishLog Account and Data Deletion</title>
+    <meta
+      name="description"
+      content="Instructions for requesting deletion of a FishLog account and associated cloud backup data."
+    />
+    <style>
+      :root {
+        --ink: #102a32;
+        --muted: #536c69;
+        --water-dark: #0f485e;
+        --reed: #477f4a;
+        --reed-dark: #2d6d3e;
+        --surface: #f8fbf5;
+        --sans:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--surface);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 12%, rgba(76, 134, 91, 0.2), transparent 26rem),
+          radial-gradient(circle at 84% 4%, rgba(18, 91, 119, 0.17), transparent 28rem),
+          linear-gradient(180deg, #f8fbf5 0%, #eef5eb 46%, #f8fbf5 100%);
+      }
+
+      header,
+      footer {
+        width: min(1120px, calc(100% - 32px));
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand,
+      .home-link,
+      footer a {
+        color: var(--water-dark);
+        font-weight: 850;
+        text-decoration-color: rgba(18, 91, 119, 0.35);
+        text-underline-offset: 4px;
+      }
+
+      .brand {
+        color: var(--ink);
+        font-size: 1.08rem;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 48px 0 88px;
+      }
+
+      article {
+        width: min(860px, calc(100% - 32px));
+        margin-inline: auto;
+        border: 1px solid rgba(20, 70, 82, 0.1);
+        border-radius: 8px;
+        padding: clamp(28px, 6vw, 58px);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 46px rgba(26, 61, 62, 0.1);
+      }
+
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--reed-dark);
+        font-size: 0.77rem;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2 {
+        color: var(--ink);
+        line-height: 1.04;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(2.4rem, 6vw, 4.4rem);
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 12px;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        letter-spacing: 0;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      strong {
+        color: var(--ink);
+      }
+
+      .intro {
+        margin-bottom: 40px;
+        color: #365d5d;
+        font-size: 1.08rem;
+      }
+
+      section {
+        padding-top: 28px;
+        border-top: 1px solid rgba(20, 70, 82, 0.1);
+      }
+
+      section + section {
+        margin-top: 28px;
+      }
+
+      section p:last-child {
+        margin-bottom: 0;
+      }
+
+      section a {
+        color: var(--water-dark);
+        font-weight: 850;
+        overflow-wrap: anywhere;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 12px 20px;
+        color: #fbfff7;
+        background: linear-gradient(135deg, var(--water-dark), var(--reed));
+        box-shadow: 0 18px 34px rgba(15, 79, 106, 0.24);
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 0 42px;
+        color: var(--muted);
+      }
+
+      footer p {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 620px) {
+        header,
+        footer,
+        article {
+          width: min(100% - 24px, 1120px);
+        }
+
+        header {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 14px 0;
+        }
+
+        main {
+          padding: 36px 0 68px;
+        }
+
+        .actions,
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="https://fishlogapp.com/">FishLog</a>
+      <a class="home-link" href="https://fishlogapp.com/">Back to FishLog</a>
+    </header>
+
+    <main>
+      <article>
+        <p class="eyebrow">FishLog Tech</p>
+        <h1>FishLog Account and Data Deletion</h1>
+        <p class="intro">
+          FishLog users can request deletion of their account and associated
+          cloud backup data at any time.
+        </p>
+
+        <section>
+          <h2>How to Request Deletion</h2>
+          <p>
+            To request deletion, email
+            <a href="mailto:support@fishlogapp.com?subject=FishLog%20Account%20Deletion%20Request">support@fishlogapp.com</a>
+            from the email address used for your FishLog account.
+          </p>
+          <p>
+            Use the subject line:
+            <strong>FishLog Account Deletion Request</strong>
+          </p>
+          <p>
+            Please include the email address associated with your FishLog
+            account so we can verify and process the request.
+          </p>
+          <div class="actions">
+            <a
+              class="button"
+              href="mailto:support@fishlogapp.com?subject=FishLog%20Account%20Deletion%20Request"
+            >
+              Request account deletion
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <h2>What Gets Deleted</h2>
+          <p>
+            After your request is verified, FishLog will delete your account
+            and associated cloud backup data, including account/profile
+            information, saved trips, catches, fishing logs, and related app
+            backup data.
+          </p>
+          <p>
+            Some records may be retained only if required for security, fraud
+            prevention, legal, or operational reasons.
+          </p>
+          <p>Deletion requests are typically completed within 30 days.</p>
+        </section>
+
+        <section>
+          <h2>Local Device Data</h2>
+          <p>
+            Deleting your cloud account and backup data does not automatically
+            delete local-only data stored on your device. To remove local data
+            from your device, you can delete the app or clear the app's local
+            storage from your device settings.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 FishLog</p>
+      <a href="https://fishlogapp.com/">Back to FishLog</a>
+    </footer>
+  </body>
+</html>
