@@ -178,7 +178,7 @@ const policySections = [
 ]
 
 const deletionMailto =
-  'mailto:support@fishlogapp.com?subject=FishLog%20Account%20Deletion%20Request'
+  'mailto:fishlogapp.feedback@gmail.com?subject=FishLog%20Account%20Deletion%20Request'
 
 function usePageTitle(title) {
   useEffect(() => {
@@ -317,8 +317,8 @@ function DeleteAccountPage() {
             <h2>How to Request Deletion</h2>
             <p>
               To request deletion, email{' '}
-              <a href={deletionMailto}>support@fishlogapp.com</a> from the
-              email address used for your FishLog account.
+              <a href={deletionMailto}>fishlogapp.feedback@gmail.com</a> from
+              the email address used for your FishLog account.
             </p>
             <p>
               Use the subject line:{' '}
