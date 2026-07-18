@@ -4,7 +4,7 @@ import './App.css'
 const baseUrl = import.meta.env.BASE_URL
 const assetPath = (fileName) => `${baseUrl}screenshots/${fileName}`
 
-const heroStats = ['Water temp', 'Depth', 'Bait', 'Trip notes']
+const heroChips = ['Catch logs', 'Trip history', 'Map markers', 'Pattern insights']
 
 const features = [
   {
@@ -43,55 +43,66 @@ const audiences = [
 
 const screenshots = [
   {
-    title: 'Home dashboard',
-    image: assetPath('home-screen.png'),
-    alt: 'FishLog home dashboard screenshot on a phone',
-    isPlaceholder: false,
-  },
-  // Replace these placeholder images with real app screenshots as screens are finalized.
-  {
-    title: 'Active trip',
-    image: assetPath('fish.png'),
-    alt: 'Placeholder FishLog active trip screenshot',
-    isPlaceholder: true,
+    image: assetPath('dashboard.png'),
+    title: 'Dashboard',
+    copy: 'Start trips, log catches, view history, open the map, and review insights from one clean home screen.',
+    alt: 'FishLog dashboard showing trip controls and app shortcuts.',
   },
   {
-    title: 'Log a catch',
-    image: assetPath('fish.png'),
-    alt: 'Placeholder FishLog log a catch screenshot',
-    isPlaceholder: true,
+    image: assetPath('active_trip_on_dashboard.png'),
+    title: 'Active trip tracking',
+    copy: 'Keep a trip running while you log catches, no-catches, timing, location, and conditions.',
+    alt: 'FishLog active trip dashboard showing a current fishing trip and quick log buttons.',
   },
   {
+    image: assetPath('log_catch_form.png'),
+    title: 'Fast catch entry',
+    copy: 'Save species, length, weight, photos, water temperature, depth, bait, and notes while the details are fresh.',
+    alt: 'FishLog log catch form with species, measurements, photos, conditions, and bait fields.',
+  },
+  {
+    image: assetPath('catch_history.png'),
     title: 'Catch history',
-    image: assetPath('fish.png'),
-    alt: 'Placeholder FishLog catch history screenshot',
-    isPlaceholder: true,
+    copy: 'Review every catch with trip, date, size, weight, photos, and location context.',
+    alt: 'FishLog catch history screen listing logged fish.',
   },
   {
-    title: 'Insights',
-    image: assetPath('fish.png'),
-    alt: 'Placeholder FishLog insights screenshot',
-    isPlaceholder: true,
+    image: assetPath('map_with_markers.png'),
+    title: 'Catch map',
+    copy: 'See catches and no-catches on the map so patterns are easier to remember.',
+    alt: 'FishLog catch map showing fishing log markers on a lake.',
+  },
+  {
+    image: assetPath('trip_history.png'),
+    title: 'Trip history',
+    copy: 'Compare past trips by lake, conditions, catches, no-catches, duration, and total logs.',
+    alt: 'FishLog trip history screen showing completed fishing trips and trip stats.',
+  },
+  {
+    image: assetPath('trip_details.png'),
+    title: 'Trip details',
+    copy: 'Review trip summaries, conditions, moon phase, catches, no-catches, and the logs from that trip.',
+    alt: 'FishLog trip details screen showing trip summary, conditions, and moon phase.',
+  },
+  {
+    image: assetPath('insights.png'),
+    title: 'Fishing insights',
+    copy: 'Turn catch history into simple patterns like best bait by species, water temp, and trip success rate.',
+    alt: 'FishLog insights screen showing best bait and catch rate patterns.',
   },
 ]
+
+// Keep a missing screenshot from leaving a broken image while local assets are being synced.
+const useScreenshotFallback = (event) => {
+  event.currentTarget.onerror = null
+  event.currentTarget.src = assetPath('fish.png')
+}
 
 const privacyPoints = [
   'FishLog is being built with a local-first mindset.',
   'Catch logs should be useful even when cell service is poor.',
   'Account and backup features are optional and not required for core functionality.',
   'The goal is that users stay in control of their fishing history.',
-]
-
-const roadmapItems = [
-  { title: 'Offline catch and trip logging', status: 'Ready' },
-  { title: 'Photo attachments', status: 'Ready' },
-  {
-    title: 'Forecast shown during active trips when internet is available',
-    status: 'Ready',
-  },
-  { title: 'Export/backup options', status: 'Ready' },
-  { title: 'Pattern insights from catch history', status: 'Ready' },
-  { title: 'Optional account/cloud backup', status: 'Ready' },
 ]
 
 const policySections = [
@@ -208,7 +219,6 @@ function PrivacyPolicyPage() {
             <a href="/privacy" aria-current="page">
               Privacy
             </a>
-            <a href="/#roadmap">Roadmap</a>
           </div>
         </nav>
       </header>
@@ -268,7 +278,6 @@ function PrivacyPolicyPage() {
             Privacy Policy
           </a>
           <a href="/delete-account">Delete Account</a>
-          <a href="/#roadmap">Roadmap</a>
         </div>
         <p className="copyright">&copy; {year} FishLog</p>
       </footer>
@@ -299,7 +308,6 @@ function DeleteAccountPage() {
             <a href="/delete-account" aria-current="page">
               Delete Account
             </a>
-            <a href="/#roadmap">Roadmap</a>
           </div>
         </nav>
       </header>
@@ -374,7 +382,6 @@ function DeleteAccountPage() {
           <a href="/delete-account" aria-current="page">
             Delete Account
           </a>
-          <a href="/#roadmap">Roadmap</a>
         </div>
         <p className="copyright">&copy; {year} FishLog</p>
       </footer>
@@ -402,7 +409,6 @@ function HomePage() {
             <a href="#features">Features</a>
             <a href="#screenshots">Screenshots</a>
             <a href="/privacy">Privacy</a>
-            <a href="#roadmap">Roadmap</a>
           </div>
         </nav>
       </header>
@@ -435,9 +441,9 @@ function HomePage() {
                   alt="FishLog home screen showing a fishing log dashboard"
                 />
               </div>
-              <div className="stat-cloud" aria-hidden="true">
-                {heroStats.map((stat) => (
-                  <span key={stat}>{stat}</span>
+              <div className="hero-chips" aria-label="FishLog highlights">
+                {heroChips.map((chip) => (
+                  <span key={chip}>{chip}</span>
                 ))}
               </div>
             </div>
@@ -496,20 +502,29 @@ function HomePage() {
             <div className="section-heading">
               <p className="eyebrow">Screenshots</p>
               <h2 id="screenshots-title">Built around the screens anglers need most.</h2>
+              <p>
+                From a quick catch entry to a complete trip review, each screen
+                keeps the details close without getting in the way on the water.
+              </p>
             </div>
 
             <div className="screenshot-grid">
-              {screenshots.map((shot) => (
+              {screenshots.map((shot, index) => (
                 <article
-                  className={`screenshot-card ${shot.isPlaceholder ? '' : 'featured-shot'}`}
+                  className={`screenshot-card ${index < 2 ? 'featured-shot' : ''}`}
                   key={shot.title}
                 >
                   <div className="phone-frame screenshot-phone">
-                    <img src={shot.image} alt={shot.alt} loading="lazy" />
+                    <img
+                      src={shot.image}
+                      alt={shot.alt}
+                      loading="lazy"
+                      onError={useScreenshotFallback}
+                    />
                   </div>
-                  <div>
+                  <div className="screenshot-copy">
                     <h3>{shot.title}</h3>
-                    {shot.isPlaceholder && <p>Placeholder screenshot</p>}
+                    <p>{shot.copy}</p>
                   </div>
                 </article>
               ))}
@@ -543,23 +558,6 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-pad" id="roadmap" aria-labelledby="roadmap-title">
-          <div className="section-inner">
-            <div className="section-heading">
-              <p className="eyebrow">Roadmap</p>
-              <h2 id="roadmap-title">Practical improvements, marked honestly.</h2>
-            </div>
-            <div className="roadmap-grid">
-              {roadmapItems.map((item) => (
-                <article className="roadmap-card" key={item.title}>
-                  <span>{item.status}</span>
-                  <h3>{item.title}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="closing section-pad" aria-labelledby="closing-title">
           <div className="section-inner closing-panel">
             <h2 id="closing-title">Start building a fishing history you can actually use.</h2>
@@ -584,7 +582,6 @@ function HomePage() {
           <a href="#screenshots">Screenshots</a>
           <a href="/privacy">Privacy Policy</a>
           <a href="/delete-account">Delete Account</a>
-          <a href="#roadmap">Roadmap</a>
         </div>
         <p className="copyright">&copy; {year} FishLog</p>
       </footer>
